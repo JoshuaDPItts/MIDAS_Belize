@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse.ant.import?>
+<project basedir="." default="build" name="MIDAS">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="MIDAS.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="config"/>
+        <pathelement location="gis"/>
+        <pathelement location="help"/>
+        <pathelement location="locale"/>
+        <pathelement location="lib/opencsv-2.1.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target depends="clean" name="cleanall"/>
+	<target depends="build" name="test">
+		<echo message="this is a test message"/>
+			
+	</target>
+	<target name="build" depends="init,build-subprojects,build-project">
+		<echo message="Creating Jar"/>
+		<jar destfile="Build/MIDAS.jar">
+			<zipfileset dir="bin"/>
+			<zipfileset dir="gis/bz"/>
+			<zipfileset dir="gis/hc"/>
+			<zipfileset dir="gis/lb"/>
+			<zipfileset dir="gis/lh"/>
+			<zipfileset dir="gis/ph"/>
+			<zipfileset dir="gis/sd"/>
+			<zipfileset dir="gis/sw"/>
+			<zipfileset dir="gis/oil/bz"/>
+			<zipfileset dir="gis/oil/hc"/>
+			<zipfileset dir="gis/oil/lb"/>
+			<zipfileset dir="gis/oil/lh"/>
+			<zipfileset dir="gis/oil/ph"/>
+			<zipfileset dir="gis/oil/sd"/>
+			<zipfileset dir="gis/oil/sw"/>
+			<zipfileset dir="help"/>
+			<zipfileset dir="locale"/>
+			<zipfileset dir="config"/>
+			<zipfileset src="lib/opencsv-2.1.jar" />
+			<manifest>
+				<attribute name="Main-Class" value="MIDAS.MIDAS" />
+				<attribute name="SplashScreen-Image" value="MIDAS-splash.gif"/>
+			</manifest>
+		</jar>
+	</target>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="MIDAS.classpath"/>
+        </javac>
+        <echo message="Done with javac"/>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+	<target name="clean" depends="build">
+		<delete dir="bin"/>
+	</target>
+</project>

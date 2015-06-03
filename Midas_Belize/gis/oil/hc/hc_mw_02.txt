@@ -1,0 +1,1 @@
+ncols	2nrows	2xllcorner	354772.787yllcorner	1938066.752cellsize	27445.87986NODATA_value	-9999-9999	0.8791264-9999	-9999

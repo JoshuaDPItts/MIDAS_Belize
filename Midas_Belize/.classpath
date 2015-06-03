@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="lib"/>
+	<classpathentry kind="src" path="gis/oil/ph"/>
+	<classpathentry kind="src" path="gis/oil/lh"/>
+	<classpathentry kind="src" path="gis/oil/bz"/>
+	<classpathentry kind="src" path="gis/oil/sd"/>
+	<classpathentry kind="src" path="gis/oil/hc"/>
+	<classpathentry kind="src" path="gis/oil/lb"/>
+	<classpathentry kind="src" path="gis/oil/sw"/>
+	<classpathentry kind="src" path="gis/hc"/>
+	<classpathentry kind="src" path="gis/lh"/>
+	<classpathentry kind="src" path="gis/bz"/>
+	<classpathentry kind="src" path="gis/lb"/>
+	<classpathentry kind="src" path="gis/ph"/>
+	<classpathentry kind="src" path="gis/sd"/>
+	<classpathentry kind="src" path="gis/sw"/>
+	<classpathentry kind="src" path="help"/>
+	<classpathentry excluding="bz/|lh/|oil/bz/|oil/sd/|oil/lb/|sd/|sw/|oil/sw/|hc/|lb/|oil/ph/|oil/lh/|oil/hc/|oil/|ph/|hc/|lh/|bz/|lb/|oil/|ph/|sd/|sw/|oil/ph/|oil/lh/|oil/bz/|oil/sd/|oil/hc/|oil/lb/|oil/sw/" kind="src" path="gis"/>
+	<classpathentry kind="src" path="config"/>
+	<classpathentry kind="src" path="locale"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="Build"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="/Users/jpitts/git/midas_belize/Midas_Belize/lib/opencsv-2.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
